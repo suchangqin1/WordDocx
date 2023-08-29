@@ -2,6 +2,7 @@ package com.mocheng.poi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ooxml.POIXMLDocumentPart;
+import org.apache.poi.ooxml.POIXMLTypeLoader;
 import org.apache.poi.openxml4j.opc.PackagePart;
 import org.apache.xmlbeans.XmlOptions;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTComment;
@@ -13,8 +14,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.util.*;
-
-import static org.apache.poi.ooxml.POIXMLTypeLoader.DEFAULT_XML_OPTIONS;
 
 /**
  * 自定义docx文档的批注对象, 对/word/comments.xml进行封装
@@ -34,7 +33,7 @@ public class DocxComments extends POIXMLDocumentPart {
     public DocxComments(PackagePart part) {
         super(part);
         try {
-            comments = CommentsDocument.Factory.parse(part.getInputStream(), DEFAULT_XML_OPTIONS).getComments();
+            comments = CommentsDocument.Factory.parse(part.getInputStream(), POIXMLTypeLoader.DEFAULT_XML_OPTIONS).getComments();
         } catch (Exception ex) {
             log.warn("从源文件没有获取到comments, 将生成comments");
         }
@@ -43,10 +42,6 @@ public class DocxComments extends POIXMLDocumentPart {
         }
 
         maxCommentId = getMaxCommentId();
-    }
-
-    public CTComments getComments() {
-        return comments;
     }
 
     /**
@@ -108,7 +103,7 @@ public class DocxComments extends POIXMLDocumentPart {
 
     @Override
     protected void commit() throws IOException {
-        XmlOptions xmlOptions = new XmlOptions(DEFAULT_XML_OPTIONS);
+        XmlOptions xmlOptions = new XmlOptions(POIXMLTypeLoader.DEFAULT_XML_OPTIONS);
         xmlOptions.setSaveSyntheticDocumentElement(new QName(CTComments.type.getName().getNamespaceURI(), "comments"));
         PackagePart part = getPackagePart();
         OutputStream out = part.getOutputStream();
