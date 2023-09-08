@@ -1,8 +1,8 @@
-package com.mocheng.poi;
+package com.scq.poi;
 
-import com.mocheng.poi.algorithm.AcMatchUtils;
-import com.mocheng.poi.algorithm.AcTree;
-import com.mocheng.poi.utils.DocxHelper;
+import com.scq.poi.algorithm.AcMatchUtils;
+import com.scq.poi.algorithm.AcTree;
+import com.scq.poi.utils.DocxHelper;
 import org.apache.poi.ooxml.POIXMLDocumentPart;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;

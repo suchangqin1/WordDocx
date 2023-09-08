@@ -1,4 +1,4 @@
-package com.mocheng.poi.algorithm;
+package com.scq.poi.algorithm;
 
 import lombok.Getter;
 import org.springframework.util.CollectionUtils;
