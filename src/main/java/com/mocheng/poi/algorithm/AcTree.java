@@ -38,8 +38,6 @@ public class AcTree {
 
     private void buildTreeByWord(char[] charArray) {
         AcNode curNode = rootNode;
-        List<Integer> wordsLengthList = new ArrayList<>(4);
-        wordsLengthList.add(charArray.length);
         for (char c : charArray) {
             // 已存在则只移动指针
             if (curNode.containChildren(c)) {
@@ -94,7 +92,6 @@ public class AcTree {
         if (CollectionUtils.isEmpty(parent.getChildren())) {
             return;
         }
-        System.out.println("1111");
         queue.addAll(parent.getChildren().values());
         AcNode parentFailNode = parent.getFailNode();
         Set<Character> childrenKeys = parent.getChildren().keySet();
