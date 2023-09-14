@@ -77,7 +77,7 @@ public class DocxComments extends POIXMLDocumentPart {
      * @return 新增的批注ID
      */
     public BigInteger createComment(String text) {
-        // 维护最多批注ID , 避免重复遍历获取
+        // 维护最大的批注ID , 避免重复
         maxCommentId = maxCommentId.add(BigInteger.ONE);
         CTComment ctComment = comments.addNewComment();
         ctComment.setAuthor(author);

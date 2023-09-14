@@ -259,7 +259,7 @@ public class DocxDocument {
             }
 
             //TODO 图片内容提取并检测批注
-            // 获取run中的图片id
+            // 获取run中的图片id , 从而获取图片 , 并通过ocr 获取图片内容 , 然后匹配标记内容 , 新增批注,  在当前run前后增加范围标签和引用标签
             /*List<String> imageInRunList = DocxUtils.getImageInRun(run);
             for (String blipId : imageInRunList) {
                 XWPFPictureData pictureData = paragraph.getDocument().getPictureDataByID(blipId);
